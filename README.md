@@ -7,7 +7,7 @@ Smart Pantry Manager is an Android application designed to help users reduce hou
 - **Pantry Management:** Full CRUD (Create, Read, Update, Delete) operations for ingredients.
 - **Strict Recipe Matching:** Only displays recipes where 100% of the ingredients are available.
 - **Smart Logic:** Handles basic pluralization (e.g., "tomatoes" vs "tomato") and unit conversions (e.g., kg to g).
-- **Recipe Details:** Step-by-step preparation instructions.
+- **Recipe Details:** Step-by-step preparation instructions and required ingredients.
 - **Persistent Data:** Data remains intact even after closing the app.
 - **Feedback States:** Helpful UI messages when the pantry or recipe list is empty.
 
@@ -30,10 +30,35 @@ I chose SQLite for this application because it is a lightweight, serverless data
 4. Connect an Android device or start an Android Emulator (API 24 or higher is required).
 5. Click the green **Run (▶)** button in the top toolbar to build and launch the app.
 
-## The Strict Matching Algorithm
-The core logic is handled in `RecipeMatcher.java`. The algorithm loops through every ingredient required for a recipe and checks it against the user's pantry list. If even *one* ingredient is missing or the quantity is insufficient, the recipe is excluded from the suggested list.
+---
+
+##  How to Test the Strict-Matching Algorithm
+When you first open the app, your pantry will be empty, and the "Recipes" tab will show 0 matches. To verify the core logic of the app, add the following ingredients into the Pantry to see specific recipes appear:
+
+### Test 1: The Exact Match
+*Add these ingredients to your pantry:*
+*   `eggs` | `2` | `pcs`
+*   `butter` | `10` | `g`
+*   `salt` | `1` | `tsp`
+    *(Navigate to the "Recipes" tab: **Scrambled Eggs** will now appear. If you delete the salt, it will disappear!)*
+
+### Test 2: Plural Handling ("tomatoes" vs "tomato")
+*Add these ingredients to your pantry:*
+*   `pasta` | `200` | `g`
+*   `tomatoes` | `3` | `pcs` *(Notice the plural 'es'—the recipe asks for "tomato", but the matcher is smart enough to handle it)*
+*   `olive oil` | `2` | `tbsp`
+    *(Navigate to the "Recipes" tab: **Tomato Pasta** will appear.)*
+
+### Test 3: Unit Conversion (kg to g)
+*Add these ingredients to your pantry:*
+*   `bread` | `2` | `pcs`
+*   `cheese` | `0.1` | `kg` *(The recipe requires 50g. Because 0.1kg = 100g, the app recognizes you have enough)*
+*   `butter` | `10` | `g`
+    *(Navigate to the "Recipes" tab: **Cheese Toastie** will appear.)*
+
+---
 
 ## Author
 **[Quade Osborne]**
-[Student Number: 402308254]
+[402308254]
 Mobile App Development 700
