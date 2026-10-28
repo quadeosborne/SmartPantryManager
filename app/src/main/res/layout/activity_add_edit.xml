@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:padding="24dp">
+
+    <EditText android:id="@+id/et_name" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Ingredient Name (e.g., Tomato)" android:layout_marginBottom="16dp"/>
+    <EditText android:id="@+id/et_qty" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Quantity (e.g., 3)" android:inputType="numberDecimal" android:layout_marginBottom="16dp"/>
+    <EditText android:id="@+id/et_unit" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Unit (e.g., pieces, g, ml)" android:layout_marginBottom="24dp"/>
+
+    <Button android:id="@+id/btn_save" android:layout_width="match_parent" android:layout_height="56dp" android:text="Save Ingredient" android:backgroundTint="@color/primary"/>
+</LinearLayout>
